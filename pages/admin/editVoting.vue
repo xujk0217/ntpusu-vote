@@ -540,7 +540,6 @@ const handleDelete = async (id: number) => {
     })
     .catch(() => {
       ElMessage.error("刪除失敗");
-      ElMessage.warning("超級管理員才可以刪除");
     });
 };
 

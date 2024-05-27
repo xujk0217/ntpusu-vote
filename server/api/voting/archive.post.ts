@@ -36,7 +36,7 @@ export default defineEventHandler(async (event) => {
         },
     })
 
-    if (!event.context.isSuperAdmin) {
+    if (!event.context.isAdmin) {
         if (Date.now() >= voting.startTime.getTime()) {
             throw createError({
                 statusCode: 403,
@@ -45,6 +45,7 @@ export default defineEventHandler(async (event) => {
             })
         }
     }
+    //TODO: 若有前項情況，前端確認訊息要說明(如顯示「投票已經開始，確定要封存嗎」)
 
     await prisma.voting.update({
         where: { id: parseInt(id) },

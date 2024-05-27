@@ -9,11 +9,11 @@ export default defineEventHandler(async (event) => {
         })
     }
 
-    if (!event.context.isSuperAdmin) {
+    if (!event.context.isAdmin) {
         throw createError({
             statusCode: 403,
             statusMessage: 'Forbidden',
-            message: '不是超級管理員',
+            message: '不是管理員',
         })
     }
 
